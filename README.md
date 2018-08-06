@@ -1,1 +1,1 @@
-# fitnes-centre-web-page
+# fitness-centre-web-page
