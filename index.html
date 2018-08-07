@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProFitness</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="svg/svg.css">
+    <link rel="stylesheet" href="reset.css">
+	<script src="common.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="contacts">
+			<ul class="contacts-ul">
+				<li>
+					<img src="svg/phone.png">
+					<span class="contacts-text">+38 050 32 45 555</span>
+				</li>
+				<li>
+					<img src="svg/convert.png">
+					<span class="contacts-text">mail@fitness.org</span>
+				</li>
+				<li>
+					<img src="svg/location.png">
+					<span class="contacts-text">г. Киев, ул.Центр, дом. 1</span>
+				</li>
+				<li>
+					<img src="svg/clock.png">
+					<span class="contacts-text">Пн-Сб 9:00-22:00, Вс 10:00-22:00</span>
+				</li>
+			</ul>
+
+			<ul class="social-networks">
+				<li class="fb-icon">
+					<object class="icon" data="svg/facebook.svg" type="image/svg+xml"></object>
+				</li>
+				<li class="vk-icon">
+					<object class="icon" data="svg/vk.svg" type="image/svg+xml"></object>
+				</li>
+				<li class="you-tube-icon">
+					<object class="icon" data="svg/youtube.svg" type="image/svg+xml"></object>
+				</li>
+				<li class="instagram-icon">
+					<object class="icon" data="svg/instagram.svg" type="image/svg+xml"></object>
+				</li>
+			</ul>
+		</div>
+		<div class="nav-bar">
+			<div class="logo">
+				<span class="logo-text logo-main">Pro</span><span class="logo-text">Fitness</span>
+				<span class="lg-bottom">Фитнес центр</span>
+				<!--<p class="lg-bottom">Фитнес центр</p>-->
+			</div>
+			<ul class="nav-bar-list">
+				<li>О нас</li>
+				<li>Услуги</li>
+				<li>Расписание</li>
+				<li>Цены</li>
+				<li>Команда</li>
+				<li>Контакты</li>
+			</ul>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main-contetnt">
+			<div class="main-info">
+				<div class="main-info-text">
+					<span class="main-info-text-header">
+						Фитнес центр
+					</span>
+					<span>
+						Начните свой путь к здоровому образу жизни с помощю наших персонализированных программ
+					</span>
+				</div>
+				<div class="main-info-button">Записаться</div>
+			</div>
+		</div>
+	</div>
+	<div class="services">
+		<div class="services-content">
+			<div class="services-header">
+				<span class="line"></span>
+				<span class="services-header-text">Услуги</span>
+				<span class="line"></span>
+			</div>
+			<ul class="services-list">
+				<li id="personal-coach"  onmouseover="displayServiceInfo('personal-coach')" onmouseout="hideServiceInfo('personal-coach')">
+					<div class="service-info">
+						<span class="service-name">Личный тренер</span>
+						<div class="service-description" id="personal-coach-description">
+							<span class="service-price">235 грн</span>
+							<span class="service-description-text">Excepteur sint cupidatat nonsunt  proident, sunt culpa deserunt officia mollit anim est deaes cupidatat laborum</span>
+							<span class="more-info-button">Подробнее</span>
+						</div>
+					</div>
+				</li>
+				<li id="hall" onmouseover="displayServiceInfo('hall')" onmouseout="hideServiceInfo('hall')">
+					<div class="service-info">
+						<span class="service-name">Тренажерный зал</span>
+						<div class="service-description" id="hall-description">
+							<span class="service-price">235 грн</span>
+							<span class="service-description-text">Excepteur sint cupidatat nonsunt  proident, sunt culpa deserunt officia mollit anim est deaes cupidatat laborum</span>
+							<span class="more-info-button">Подробнее</span>
+						</div>
+					</div>
+				</li>
+				<li id="group-sessions" onmouseover="displayServiceInfo('group-sessions')" onmouseout="hideServiceInfo('group-sessions')">
+					<div class="service-info">
+						<span class="service-name" >Групповые занятия</span>
+						<div class="service-description" id="group-sessions-description">
+							<span class="service-price">235 грн</span>
+							<span class="service-description-text">Excepteur sint cupidatat nonsunt  proident, sunt culpa deserunt officia mollit anim est deaes cupidatat laborum</span>
+							<span class="more-info-button">Подробнее</span>
+						</div>
+					</div>
+				</li>
+				<li id="box" onmouseover="displayServiceInfo('box')" onmouseout="hideServiceInfo('box')">
+					<div class="service-info">
+						<span class="service-name">Бокс</span>
+							<div class="service-description" id="box-description">
+							<span class="service-price">235 грн</span>
+							<span class="service-description-text">Excepteur sint cupidatat nonsunt  proident, sunt culpa deserunt officia mollit anim est deaes cupidatat laborum</span>
+							<span class="more-info-button">Подробнее</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="about">
+		<div class="about-header">
+			<div class="about-header-name">
+				<span class="line grey"></span>
+				<span class="about-header-name-text">О нас</span>
+				<span class="line grey"></span>
+			</div>
+			<div class="about-header-description">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor aboris nisi ut aliquip ex commodo consequat
+			</div>
+		</div>
+		<ul class="advantages">
+			<li class="advantage-container">
+				<span class="advantage-icon">
+					<img src="svg/dumbbell.svg">
+				</span>
+				<span class="advantage-name">Эксклюзивное новое  оборудование</span>
+			</li>
+			<li class="advantage-container">
+				<span class="advantage-icon">
+					<img src="svg/football-whistle-of-referee.svg">
+				</span>
+				<span class="advantage-name">Индивидуальный подход  к тренировкам</span>
+			</li>
+			<li class="advantage-container">
+				<span class="advantage-icon">
+					<img src="svg/discount-sticker-with-percentage.svg">
+				</span>
+				<span class="advantage-name">Скидочные программы для постоянных клиентов</span>
+			</li>
+			<li class="advantage-container">
+				<span class="advantage-icon">
+					<img src="svg/roll-mat-variant.svg">
+				</span>
+				<span class="advantage-name">Мы предоставляем свой  спортинвентарь</span>
+			</li>
+		</ul>
+		<div class="about-video-container">
+			<div class="about-video"></div>
+		</div>
+	</div>
+	<div class="coaches"></div>
+	<div class="agitation"></div>
+	<div class="reviews"></div>
+	<div class="mailing"></div>
+	<div class="map"></div>
+	<div class="footer"></div>
+</body>
+</html>
