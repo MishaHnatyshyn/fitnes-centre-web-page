@@ -407,3 +407,43 @@
     font-family: openSans;
     font-size: 1.125em;
 }
+
+.about-video-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    width: 80%;
+    height: 480px;
+    background-image:
+            linear-gradient(to bottom, rgba(33, 33, 33, 0.5) 0%, rgba(33, 33, 33, 0.5) 100%),
+            url("img/video-play.jpg") ;
+    background-size: cover;
+}
+
+.play-button-container{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background: rgb(254, 86, 33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.25;
+}
+
+.play-button{
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 15px 0 15px 26px;
+    border-color: transparent transparent transparent #ffffff;
+    /*opacity: .75;*/
+}
+
+.play-button-container:hover{
+    opacity: 1;
+    background: rgba(254, 86, 33, 0.4);
+    cursor: pointer;
+}
