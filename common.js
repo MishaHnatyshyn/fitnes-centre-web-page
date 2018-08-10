@@ -295,8 +295,6 @@ $(document).ready(function() {
 
     offset = 0;
     $("#slider-button-right").click(function(){
-        console.log(offset)
-        console.log(width * (slidesCount-reviewsDisplayCount))
         if (offset < width * (slidesCount-reviewsDisplayCount)) {
             offset += width;
             $("#reviews-containers").css("transform","translate3d(-"+offset+"px, 0px, 0px)");
