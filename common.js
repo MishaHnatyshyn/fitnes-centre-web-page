@@ -93,7 +93,7 @@ const programs = [
         sportKinds:['yoga']
     },
     {
-        id:'box',
+        id:'boxing',
         name:'Бокс',
         price:'235 грн',
         time:'Пн-Сб 18:00-20:00',
@@ -104,7 +104,7 @@ const programs = [
         sportKinds:['boxing']
     },
     {
-        id:'box-t',
+        id:'boxing-t',
         name:'Тайский бокс',
         price:'235 грн',
         time:'Пн-Сб 18:00-20:00',
@@ -138,6 +138,8 @@ const programs = [
     },
 ];
 
+let selectedPrograms = [];
+
 const getPrograms = (data) => {
     const result = [];
 
@@ -159,8 +161,6 @@ const getPrograms = (data) => {
 
     return result
 };
-
-const selectedPrograms = [];
 
 function initMap() {
     const coordinates = {lat: 50.448538, lng: 30.522542};
@@ -204,7 +204,11 @@ const checkFields = () =>{
                     <div class="program-container">
 						<div class="program-name">${item.name}</div>
 						<div class="program-info">
-							<input type="checkbox" id="${item.id}" class="program-checkbox">
+							<input 
+							    type="checkbox" 
+                                ${selectedPrograms.indexOf(item.id) !== -1? 'checked':''} 
+                                id="${item.id}" 
+                                class="program-checkbox">
 							<label for="${item.id}"></label>
 							<div class="program-details">
 								<div class="program-price">
@@ -262,12 +266,20 @@ const checkPrograms = () => {
 const subscribe = () => {
     const checkBoxes = document.getElementsByClassName("program-checkbox");
     const selectedProgramsList = document.getElementById("subscribed-program-list");
+    selectedProgramsList.innerHTML = '';
+
     for (let i = 0;i < checkBoxes.length;i++){
-        if(checkBoxes[i].checked  === true){
+        if(checkBoxes[i].checked  === true && selectedPrograms.indexOf(checkBoxes[i].id) === -1){
             selectedPrograms.push(checkBoxes[i].id);
-            selectedProgramsList.innerHTML += `<li>${programsName[checkBoxes[i].id]}</li>`
+        }else if(selectedPrograms.indexOf(checkBoxes[i].id) !== -1){
+            selectedPrograms.splice(selectedPrograms.indexOf(checkBoxes[i].id),1)
         }
     }
+
+    selectedPrograms.forEach(program=>{
+        selectedProgramsList.innerHTML += `<li>${programsName[program]}</li>`
+    });
+
     document.getElementById('modal-window-background').style.display = 'none';
     document.getElementById('subscribe').style.display = 'none';
 };
@@ -295,8 +307,6 @@ $(document).ready(function() {
 
     offset = 0;
     $("#slider-button-right").click(function(){
-        console.log(offset)
-        console.log(width * (slidesCount-reviewsDisplayCount))
         if (offset < width * (slidesCount-reviewsDisplayCount)) {
             offset += width;
             $("#reviews-containers").css("transform","translate3d(-"+offset+"px, 0px, 0px)");
