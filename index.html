@@ -1,47 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
     <meta charset="UTF-8">
     <title>ProFitness</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="svg/svg.css">
-    <link rel="stylesheet" href="reset.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="common.css">
+	<link rel="stylesheet" href="reset.css">
+	<script src="jquery-3.3.1.min.js"></script>
 	<script src="common.js"></script>
+	<script src="svgloader.min.js"></script>
+
 </head>
 <body>
-	<div class="header">
+	<div class="modal-window-background" id="modal-window-background">
+		<div class="modal-window " id="modal-window">
+			<span class="modal-window-close" onclick="modalClose()">Закрыть</span>
+			<div id="subscribed-program" class="subscribed-program subscribe">
+				<span class="subscribed-program-list-header">Вы уже записались на:</span>
+				<ul class="subscribed-program-list" id="subscribed-program-list"></ul>
+				<div id="subscribe-more-button" class="subscribe-button" onclick="subscribeMore()">Записаться еще</div>
+			</div>
+			<form id="subscribe" class="subscribe">
+
+				<div id="subscribe-user-info" class="subscribe-user-info" onchange="checkFields()">
+					<input type="text" class="subscribe-input" name="user_name" id="user_name" placeholder="Имя">
+					<div class="input-container">
+						<input type="number" min="6" max="100" class="subscribe-input" name="age" id="age" placeholder="Возраст">
+						<input type="number" class="subscribe-input" name="weight" id="weight" placeholder="Вес, кг">
+						<select	name="sex" class="subscribe-input" id="sex" >
+							<option value="" disabled selected>Пол</option>
+							<option value="Male">Мужской</option>
+							<option value="Female">Женский</option>
+						</select>
+					</div>
+					<select name="sport-kinds" class="subscribe-input" id="sport-kinds">
+						<option value="" disabled selected>Виды спорта</option>
+						<option value="any">Любой</option>
+						<option value="boxing">Бокс</option>
+						<option value="weightlifting">Тяжёлая атлетика</option>
+						<option value="powerlifting">Пауэрлифтинг</option>
+						<option value="fitness">Фитнес</option>
+						<option value="thai-boxing">Тайский бокс</option>
+						<option value="yoga">Йога</option>
+					</select>
+				</div>
+				<div class="programs" id="programs" onchange="checkPrograms()">
+					<div class="programs-header">Доступные программы</div>
+					<div class="programs-list" id="programs-list">
+					</div>
+				</div>
+				<div id="subscribe-button" class="subscribe-button" onclick="subscribe()">Записаться</div>
+			</form>
+		</div>
+	</div>
+	<header class="header">
 		<div class="contacts">
 			<ul class="contacts-ul">
 				<li>
-					<img src="svg/phone.png">
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#phone" ></use>
+					</svg>
 					<span class="contacts-text">+38 050 32 45 555</span>
 				</li>
 				<li>
-					<img src="svg/convert.png">
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#mail" ></use>
+					</svg>
 					<span class="contacts-text">mail@fitness.org</span>
 				</li>
 				<li>
-					<img src="svg/location.png">
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#location" ></use>
+					</svg>
 					<span class="contacts-text">г. Киев, ул.Центр, дом. 1</span>
 				</li>
 				<li>
-					<img src="svg/clock.png">
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#clock" ></use>
+					</svg>
 					<span class="contacts-text">Пн-Сб 9:00-22:00, Вс 10:00-22:00</span>
 				</li>
 			</ul>
 
 			<ul class="social-networks">
 				<li class="fb-icon">
-					<object class="icon" data="svg/facebook.svg" type="image/svg+xml"></object>
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#fb" ></use>
+					</svg>
 				</li>
 				<li class="vk-icon">
-					<object class="icon" data="svg/vk.svg" type="image/svg+xml"></object>
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#vk" ></use>
+					</svg>
 				</li>
 				<li class="you-tube-icon">
-					<object class="icon" data="svg/youtube.svg" type="image/svg+xml"></object>
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#you-toube" ></use>
+					</svg>
 				</li>
 				<li class="instagram-icon">
-					<object class="icon" data="svg/instagram.svg" type="image/svg+xml"></object>
+					<svg class="icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#instagram" ></use>
+					</svg>
 				</li>
 			</ul>
 		</div>
@@ -49,8 +109,23 @@
 			<div class="logo">
 				<span class="logo-text logo-main">Pro</span><span class="logo-text">Fitness</span>
 				<span class="lg-bottom">Фитнес центр</span>
-				<!--<p class="lg-bottom">Фитнес центр</p>-->
 			</div>
+			<div class="drop-down-menu">
+				<svg class="menu-icon">
+					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#menu" ></use>
+				</svg>
+
+				<ul class="drop-down-ul">
+					<li>О нас</li>
+					<li>Услуги</li>
+					<li>Расписание</li>
+					<li>Цены</li>
+					<li>Команда</li>
+					<li>Контакты</li>
+				</ul>
+
+			</div>
+
 			<ul class="nav-bar-list">
 				<li>О нас</li>
 				<li>Услуги</li>
@@ -59,8 +134,9 @@
 				<li>Команда</li>
 				<li>Контакты</li>
 			</ul>
+
 		</div>
-	</div>
+	</header>
 	<div class="main">
 		<div class="main-contetnt">
 			<div class="main-info">
@@ -72,7 +148,7 @@
 						Начните свой путь к здоровому образу жизни с помощю наших персонализированных программ
 					</span>
 				</div>
-				<div class="main-info-button">Записаться</div>
+				<div class="main-info-button" onclick="modalShow()">Записаться</div>
 			</div>
 		</div>
 	</div>
@@ -84,7 +160,7 @@
 				<span class="line"></span>
 			</div>
 			<ul class="services-list">
-				<li id="personal-coach"  onmouseover="displayServiceInfo('personal-coach')" onmouseout="hideServiceInfo('personal-coach')">
+				<li id="personal-coach">
 					<div class="service-info">
 						<span class="service-name">Личный тренер</span>
 						<div class="service-description" id="personal-coach-description">
@@ -94,7 +170,7 @@
 						</div>
 					</div>
 				</li>
-				<li id="hall" onmouseover="displayServiceInfo('hall')" onmouseout="hideServiceInfo('hall')">
+				<li id="hall">
 					<div class="service-info">
 						<span class="service-name">Тренажерный зал</span>
 						<div class="service-description" id="hall-description">
@@ -104,7 +180,7 @@
 						</div>
 					</div>
 				</li>
-				<li id="group-sessions" onmouseover="displayServiceInfo('group-sessions')" onmouseout="hideServiceInfo('group-sessions')">
+				<li id="group-sessions">
 					<div class="service-info">
 						<span class="service-name" >Групповые занятия</span>
 						<div class="service-description" id="group-sessions-description">
@@ -114,7 +190,7 @@
 						</div>
 					</div>
 				</li>
-				<li id="box" onmouseover="displayServiceInfo('box')" onmouseout="hideServiceInfo('box')">
+				<li id="box">
 					<div class="service-info">
 						<span class="service-name">Бокс</span>
 							<div class="service-description" id="box-description">
@@ -141,38 +217,253 @@
 		<ul class="advantages">
 			<li class="advantage-container">
 				<span class="advantage-icon">
-					<img src="svg/dumbbell.svg">
+					<img alt="dumbbell" src="svg/dumbbell.svg">
 				</span>
 				<span class="advantage-name">Эксклюзивное новое  оборудование</span>
 			</li>
 			<li class="advantage-container">
 				<span class="advantage-icon">
-					<img src="svg/football-whistle-of-referee.svg">
+					<img alt="football-whistle-of-referee" src="svg/football-whistle-of-referee.svg">
 				</span>
 				<span class="advantage-name">Индивидуальный подход  к тренировкам</span>
 			</li>
 			<li class="advantage-container">
 				<span class="advantage-icon">
-					<img src="svg/discount-sticker-with-percentage.svg">
+					<img alt="discount-sticker-with-percentage" src="svg/discount-sticker-with-percentage.svg">
 				</span>
 				<span class="advantage-name">Скидочные программы для постоянных клиентов</span>
 			</li>
 			<li class="advantage-container">
 				<span class="advantage-icon">
-					<img src="svg/roll-mat-variant.svg">
+					<img alt="roll-mat-variant" src="svg/roll-mat-variant.svg">
 				</span>
 				<span class="advantage-name">Мы предоставляем свой  спортинвентарь</span>
 			</li>
 		</ul>
 		<div class="about-video-container">
-			<div class="about-video"></div>
+			<div class="play-button-container">
+				<div class="play-button"></div>
+			</div>
 		</div>
 	</div>
-	<div class="coaches"></div>
-	<div class="agitation"></div>
-	<div class="reviews"></div>
-	<div class="mailing"></div>
-	<div class="map"></div>
-	<div class="footer"></div>
+	<div class="coaches">
+		<div class="coaches-header">
+			<span class="line"></span>
+			<span class="coaches-header-name">Тренера</span>
+			<span class="line"></span>
+		</div>
+		<ul class="coaches-containers">
+			<li class="coach-container">
+				<div class="coach-icon" id="coach1-icon">
+					<img alt="coach1" src="img/coach1.png">
+					<div class="coach-hover"></div>
+				</div>
+				<span class="coach-name" id="coach1-name">Имя Фамилия</span>
+				<span class="coach-position">Главный тренер</span>
+				<span class="coach-info">Lorem ipsum dolor consectetur adipisicing, eiusmo incididunt labore dolore aliqua</span>
+			</li>
+			<li class="coach-container">
+				<div class="coach-icon" id="coach2-icon">
+					<img alt="coach2" src="img/coach2.png">
+					<div class="coach-hover"></div>
+				</div>
+				<span class="coach-name" id="coach2-name">Имя Фамилия</span>
+				<span class="coach-position">Главный тренер</span>
+				<span class="coach-info">Lorem ipsum dolor consectetur adipisicing, eiusmo incididunt labore dolore aliqua</span>
+			</li>
+			<li class="coach-container">
+				<div class="coach-icon" id="coach3-icon">
+					<img alt="coach3" src="img/coach3.png">
+					<div class="coach-hover"></div>
+				</div>
+				<span class="coach-name" id="coach3-name">Имя Фамилия</span>
+				<span class="coach-position">Главный тренер</span>
+				<span class="coach-info">Lorem ipsum dolor consectetur adipisicing, eiusmo incididunt labore dolore aliqua</span>
+			</li>
+			<li class="coach-container">
+				<div class="coach-icon" id="coach4-icon">
+					<img alt="coach4" src="img/coach4.png">
+					<div class="coach-hover"></div>
+					<div class="icon-hover"></div>
+				</div>
+				<span class="coach-name" id="coach4-name">Имя Фамилия</span>
+				<span class="coach-position">Главный тренер</span>
+				<span class="coach-info">Lorem ipsum dolor consectetur adipisicing, eiusmo incididunt labore dolore aliqua</span>
+			</li>
+		</ul>
+	</div>
+	<div class="agitation">
+		<span class="agitation-text">Первое занятия у нас бесплатно</span>
+		<div class="agitation-button" onclick="modalShow()">Записаться</div>
+	</div>
+	<div class="reviews">
+		<div class="reviews-header">
+			<span class="line"></span>
+			<span class="reviews-header-name">Отзывы</span>
+			<span class="line"></span>
+		</div>
+		<div class="slider">
+			<div class="reviews-containers" id="reviews-containers">
+				<div class="review review-first">
+					<div class="review-author-icon">
+						<img alt="review1" src="img/review1.png">
+					</div>
+					<div class="review-text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+					<div class="review-author">
+						<img alt="quotes-dark" src="svg/quotes-dark.png">
+						Имя Фамилия
+					</div>
+				</div>
+				<div class="review review-next">
+					<div class="review-author-icon">
+						<img alt="review2" src="img/review2.png">
+					</div>
+					<div class="review-text">
+						Maecenas consequat lacus nec metus tempus efficitur. Ut tempus ipsum sed est finibus, a iaculis orci lacinia. Vestibulum vel ultricies sem. Cras mattis velit et risus posuere consectetur. 			</div>
+					<div class="review-author">
+						<img alt="quotes-dark" src="svg/quotes-dark.png">
+						Имя Фамилия
+					</div>
+				</div>
+				<div class="review review-next">
+					<div class="review-author-icon">
+						<img alt="review3" src="img/review3.png">
+					</div>
+					<div class="review-text">
+						Morbi dapibus fringilla ligula vel maximus. Vivamus ut rutrum felis. Integer eget arcu at ligula pharetra interdum quis in felis. 			</div>
+					<div class="review-author">
+						<img alt="quotes-dark" src="svg/quotes-dark.png">
+						Имя Фамилия
+					</div>
+				</div>
+				<div class="review review-next">
+					<div class="review-author-icon">
+						<img alt="review2" src="img/review2.png">
+					</div>
+					<div class="review-text">
+						Maecenas consequat lacus nec metus tempus efficitur. Ut tempus ipsum sed est finibus, a iaculis orci lacinia. Vestibulum vel ultricies sem. Cras mattis velit et risus posuere consectetur. 			</div>
+					<div class="review-author">
+						<img alt="quotes-dark" src="svg/quotes-dark.png">
+						Имя Фамилия
+					</div>
+				</div>
+				<div class="review review-first">
+					<div class="review-author-icon">
+						<img alt="review1" src="img/review1.png">
+					</div>
+					<div class="review-text">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+					<div class="review-author">
+						<img alt="quotes-dark" src="svg/quotes-dark.png">
+						Имя Фамилия
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="reviews-slider-buttons">
+			<span id="slider-button-left">
+				<img alt="slider-righ" src="svg/slider-left.svg">
+			</span>
+			<span id="slider-button-right">
+				<img alt="slider-righ" src="svg/slider-right.svg">
+			</span>
+		</div>
+	</div>
+	<div class="mailing">
+		<div class="mailing-container">
+			<span class="mailing-header">Подписаться на новости</span>
+			<span class="mailing-text">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor aboris nisi ut aliquip ex commodo consequat
+			</span>
+			<div class="mailing-form">
+				<input class="mailing-form-item mailing-form-input" type="email" name="email" placeholder="Электронная почта">
+				<div class="mailing-form-item mailing-form-button">Подписаться</div>
+			</div>
+		</div>
+	</div>
+	<div id="map"></div>
+	<footer class="footer">
+		<div class="footer-info">
+			<div class="footer-main-info-container">
+				<div class="footer-logo logo">
+					<span class="logo-text logo-main">Pro</span><span class="logo-text">Fitness</span>
+					<span class="lg-bottom">Фитнес центр</span>
+				</div>
+				<div class="footer-text">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor aboris nisi ut aliquip ex commodo consequat
+				</div>
+				<ul class="social-networks footer-social-networks">
+					<li class="social-network-icon-footer">
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#fb" ></use>
+						</svg>
+					</li>
+					<li class="social-network-icon-footer">
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#vk" ></use>
+						</svg>
+					</li>
+					<li class="social-network-icon-footer">
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#instagram" ></use>
+						</svg>
+					</li>
+					<li class="social-network-icon-footer">
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#you-toube" ></use>
+						</svg>
+					</li>
+				</ul>
+			</div>
+			<div class="footer-pages-container">
+				<span class="footer-container-header">Страницы</span>
+				<ul class="footer-container-list footer-menu-outline">
+					<li>О нас</li>
+					<li>Услуги</li>
+					<li>Расписание</li>
+					<li>Цены</li>
+					<li>Команда</li>
+					<li>Контакты</li>
+				</ul>
+			</div>
+			<div class="contacts-container">
+				<span class="footer-container-header">Контакты</span>
+				<ul class="footer-container-list footer-menu-outline footer-menu-contacts">
+					<li>
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#phone" ></use>
+						</svg>
+						<span>+38 050 32 45 555</span>
+					</li>
+					<li>
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#mail" ></use>
+						</svg>
+						<span>mail@fitness.org</span>
+					</li>
+					<li>
+						<svg class="icon">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./svg/iconsprite.svg#location" ></use>
+						</svg>
+						<span>г. Киев, ул.Центр, дом. 1</span>
+					</li>
+				</ul>
+			</div>
+			<div class="schedule-container">
+				<span class="footer-container-header">График работы</span>
+				<ul class="footer-container-list work-time-footer">
+					<li>Пн-Сб 9:00-22:00</li>
+					<li>Вс 10:00-22:00</li>
+				</ul>
+			</div>
+		</div>
+		<div class="copy-rigths">© 2017 Все права защищены</div>
+	</footer>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9ik038KBiv-wcwLt4wtLMAuj7XYGgfVo&callback=initMap"></script>
 </body>
 </html>
