@@ -882,12 +882,14 @@ body, html{
 }
 
 .footer-social-networks{
-	margin-top: 30px;
+	flex-wrap: wrap;
+	margin-top: 10px;
 }
 
 .footer-social-networks li{
 	margin-left: 0;
 	margin-right: 20px;
+	margin-top: 10px;
 }
 
 .footer-menu-contacts{
@@ -1408,6 +1410,16 @@ option[value=""][disabled] {
 	.coaches{
 		height: 100%;
 	}
+
+
+	.contacts-ul li span{
+		display: none;
+	}
+
+	.contacts-ul li:hover span{
+		display: none;
+	}
+
 }
 
 @media only screen and (max-width: 500px) {
@@ -1455,6 +1467,7 @@ option[value=""][disabled] {
 	.footer-info{
 		flex-wrap: wrap;
 		justify-content: space-evenly;
+		margin-top: 30px;
 	}
 
 	.footer{
