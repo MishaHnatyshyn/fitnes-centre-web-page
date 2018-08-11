@@ -1,6 +1,6 @@
 @font-face {
 	font-family: openSans;
-	src: url(fonts/OpenSans-Regular.ttf);
+	src: url(../fonts/OpenSans-Regular.ttf);
 }
 
 body, html{
@@ -205,7 +205,7 @@ body, html{
 	padding-top: 75px;
 	width: 100%;
 	height: 85%;
-	background-image: url("img/123.jpg");
+	background-image: url("../img/123.jpg");
     background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -332,19 +332,19 @@ body, html{
 }
 
 #personal-coach {
-    background-image: url("img/personal-coach.jpg");
+    background-image: url("../img/personal-coach.jpg");
 }
 
 #group-sessions{
-	background-image: url("img/group-sessions.jpg");
+	background-image: url("../img/group-sessions.jpg");
 }
 
 #hall{
-	background-image: url("img/hall.jpg");
+	background-image: url("../img/hall.jpg");
 }
 
 #box{
-	background-image: url("img/box.jpg");
+	background-image: url("../img/box.jpg");
 }
 
 .service-info{
@@ -425,7 +425,7 @@ body, html{
     background-image:
             linear-gradient(to bottom, rgba(48, 63, 159, 0.2) 0%, rgba(254, 86, 33, 0.21) 70%),
             linear-gradient(to bottom, rgba(34, 25, 26, 0.79) 0%, rgba(34, 25, 26, 0.79) 70%),
-            url("img/about_background.jpg") ;
+            url("../img/about_background.jpg") ;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -662,7 +662,7 @@ body, html{
 	background-image:
 			linear-gradient(to bottom, rgba(254, 86, 33, 0.85) 0%, rgba(254, 86, 33, 0.85) 100%),
 			linear-gradient(to bottom, rgba(48, 63, 159, 0.4) 0%, rgba(254, 86, 33, 0.4) 70%),
-			url("img/agitation.jpg") ;
+			url("../img/agitation.jpg") ;
 	background-size: cover;
 	display: flex;
 	flex-direction: column;
@@ -707,7 +707,7 @@ body, html{
 	background-image:
 			linear-gradient(to bottom, rgba(34, 25, 26, 0.79) 0%, rgba(34, 25, 26, 0.79) 100%),
 			linear-gradient(to bottom, rgba(48, 63, 159, 0.53) 0%, rgba(254, 86, 33, 0.53) 70%),
-			url("img/mailing.jpg") ;
+			url("../img/mailing.jpg") ;
 	background-size: cover;
 	display: flex;
 	align-items: center;
@@ -794,7 +794,7 @@ body, html{
 	height: 57%;
 	background-image:
 			linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.85) 100%),
-			url("img/footer.jpg") ;
+			url("../img/footer.jpg") ;
 	background-size: cover;
 	display: flex;
 	flex-direction: column;
