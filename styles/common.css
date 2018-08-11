@@ -544,6 +544,10 @@ body, html{
     cursor: pointer;
 }
 
+#video{
+    width: 100%;
+}
+
 .video-filter{
 	display: flex;
 	align-items: center;
