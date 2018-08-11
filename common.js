@@ -336,3 +336,13 @@ $(window).scroll(function () {
         $(".header").css('height','16%');
     }
 });
+
+const videoPlay = () => {
+    document.getElementById('video').play();
+    document.getElementById('video-filter').style.display = 'none';
+}
+
+const videoPause = () => {
+    document.getElementById('video').pause();
+    document.getElementById('video-filter').style.display = 'flex';
+}
