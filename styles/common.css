@@ -1,3 +1,4 @@
+@import "reset.css";
 @font-face {
 	font-family: openSans;
 	src: url(../fonts/OpenSans-Regular.ttf);
@@ -123,7 +124,7 @@ body, html{
 }
 
 .contacts{
-	display: inline-flex;
+	display: none;
 	align-items: center;
 	justify-content: space-between;
 	background: radial-gradient(ellipse at bottom, rgba(48, 63, 159, 0.1) 0%, rgba(254, 86, 33, 0.04) 80%),
@@ -155,6 +156,7 @@ body, html{
 }
 
 .nav-bar{
+	position: fixed;
     z-index: 1000;
 	width: 100%;
 	display: inline-flex;
@@ -331,19 +333,19 @@ body, html{
     transform: scale(1.04);
 }
 
-#personal-coach {
+.personal-coach {
     background-image: url("../img/personal-coach.jpg");
 }
 
-#group-sessions{
+.group-sessions{
 	background-image: url("../img/group-sessions.jpg");
 }
 
-#hall{
+.hall{
 	background-image: url("../img/hall.jpg");
 }
 
-#box{
+.box{
 	background-image: url("../img/box.jpg");
 }
 
@@ -493,10 +495,28 @@ body, html{
     display: inline-flex;
 }
 
+.social-network-icon-footer a{
+	height: 14px;
+}
+
 .advantages li{
+	max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.nav-bar-list a, .drop-down-ul a{
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	align-items: center;
+}
+
+a{
+	text-decoration: none;
+	color: initial;
 }
 
 .advantage-name{
@@ -527,7 +547,7 @@ body, html{
     justify-content: center;
     align-items: center;
     opacity: 0.25;
-	z-index: 3000;
+	z-index: 1;
 }
 
 .play-button{
@@ -545,7 +565,7 @@ body, html{
     cursor: pointer;
 }
 
-#video{
+.video{
     width: 100%;
 }
 
@@ -787,7 +807,7 @@ body, html{
 	outline: none;
 }
 
-#map{
+.map{
 	height: 52%;
 }
 
@@ -995,59 +1015,12 @@ body, html{
 	opacity: 1;
 }
 
-#slider-button-left{
-	padding-left: 8px;
-	padding-right: 12px;
-	margin-right: 9px;
-}
-
-#slider-button-right{
-	padding-left: 12px;
-	padding-right: 8px;
-	margin-left: 9px;
-}
-
-.review-author-icon{
-	border-radius: 50%;
-}
-
 .nav-bar-items{
 	height: 100%;
 	display: inline-flex;
 	margin-right: 8%;
 	min-width: 200px;
 }
-
-.modal-window-background{
-	position: fixed;
-	background: rgba(0, 0, 0, 0.51);
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	z-index: 2000;
-	display: none;
-	justify-content: center;
-}
-
-.modal-window{
-	display: flex;
-    width: 60%;
-    height: auto;
-    padding-bottom: 2%;
-    background: white;
-    z-index: 1;
-	-webkit-box-shadow:0px 0px 50px 10px rgba(0,0,0,0.18);
-	-moz-box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.18);
-	box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.18);
-    margin-top: 5%;
-    flex-direction: column;
-    font-family: openSans;
-}
-
-option[value=""][disabled] {
-    display: none;
-}
-
 .subscribe{
     margin-top: 4%;
     display: flex;
@@ -1062,17 +1035,6 @@ option[value=""][disabled] {
     flex-direction: column;
     flex-wrap: wrap;
 }
-
-#age, #weight{
-    width: 20%;
-}
-
-#sex{
-    width: 35%;
-    height: 50px;
-}
-
-
 .input-container{
     display: inline-flex;
     justify-content: space-between;
@@ -1199,7 +1161,7 @@ option[value=""][disabled] {
     margin-bottom: 10px;
 }
 
-#subscribe-more-button{
+.subscribe-more-button{
     display: flex;
 }
 
@@ -1356,17 +1318,6 @@ option[value=""][disabled] {
     .input-container{
         flex-wrap: wrap;
     }
-
-    #age, #weight{
-        width: 35%;
-
-    }
-
-    #sex{
-        width: 100%;
-        height: 35px;
-    }
-
 
 	.nav-bar-list{
 		display: none
@@ -1553,6 +1504,9 @@ option[value=""][disabled] {
 	.more-info-button{
 		width: 110px;
 	}
+	.main{
+		padding-top: 8%;
+	}
 
 
 }
@@ -1572,87 +1526,6 @@ option[value=""][disabled] {
 	.footer{
 		height: 80%;
 	}
-}
-
-
-@media only screen and (max-height: 500px){
-	.main{
-		padding-top: 8%;
-	}
-}
-
-@media only screen and (max-height: 300px){
-	.main{
-		padding-top: 5%;
-	}
-}
-
-/*HIDE ARROWS FROM INPUT TYPE NUMBER*/
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-input[type="number"]:hover,
-input[type="number"]:focus {
-    -moz-appearance: number-input;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/*CUSTOM CHECKBOX*/
-input[type=checkbox] {
-    display: none;
-}
-
-input[type=checkbox] + label:before {
-    content: "\2713";
-    color: transparent;
-    display: inline-block;
-    border: 2px solid rgb(254, 86, 33);
-    font-size: 11px;
-    line-height: 12px;
-    margin: -5px 5px 0 0;
-    height: 12px;
-    width: 12px;
-    text-align: center;
-    vertical-align: middle;
-    transition: color ease .3s;
-    font-weight: bold;
-}
-
-input[type=checkbox]:checked + label:before {
-    color: #000;
-}
-
-/*SLIDER*/
-
-.slider{
-    overflow:hidden;
-    position:relative;
-    width: 100%;
-}
-
-
-.reviews {
-    overflow:hidden;
-    z-index: 2;
-    position:relative;
-}
-
-#reviews-containers {
-    align-self: flex-start;
-    overflow:hidden;
-      position:relative;
-      transition:1s;
 }
 
 
